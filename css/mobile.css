@@ -255,11 +255,13 @@
     /* WebKit 浏览器优化 */
     input, textarea, select {
         -webkit-appearance: none;
+        appearance: none;
         border-radius: 8px;
     }
     
     button {
         -webkit-appearance: none;
+        appearance: none;
     }
 }
 
