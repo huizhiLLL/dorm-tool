@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿舍工具箱</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+    <!-- 登录窗口 -->
+    <div id="loginModal" class="login-modal active">
+        <div class="login-overlay"></div>
+        <div class="login-window">
+            <div class="login-header">
+                <h2>🏠 宿舍工具箱</h2>
+                <p>让宿舍生活更便捷</p>
+            </div>
+            <div class="login-body">
+                <div class="input-group">
+                    <label for="nicknameInput">请输入你的昵称</label>
+                    <input type="text" id="nicknameInput" placeholder="昵称" maxlength="20">
+                </div>
+                <button id="loginBtn" class="btn-primary">进入工具箱</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主页面 -->
+    <div id="mainPage" class="page">
+        <!-- 顶部导航 -->
+        <header class="header">
+            <div class="user-info">
+                <span id="currentUser">用户昵称</span>
+                <button id="logoutBtn" class="btn-text">退出</button>
+            </div>
+        </header>
+
+        <!-- 底部导航 -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-page="home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </button>
+            <button class="nav-item" data-page="urls">
+                <span class="nav-icon">🔗</span>
+                <span class="nav-text">网址</span>
+            </button>
+            <button class="nav-item" data-page="announcements">
+                <span class="nav-icon">📢</span>
+                <span class="nav-text">公告</span>
+            </button>
+            <button class="nav-item" data-page="lottery">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">抽奖</span>
+            </button>
+        </nav>
+
+        <!-- 内容区域 -->
+        <main class="main-content">
+            <!-- 首页 -->
+            <div id="homePage" class="content-page active">
+                <div class="welcome-section">
+                    <h2>欢迎回来！</h2>
+                    <p>选择下方功能开始使用</p>
+                </div>
+                
+                <div class="quick-actions">
+                    <div class="action-card" data-action="urls">
+                        <div class="action-icon">🔗</div>
+                        <h3>实用网址</h3>
+                        <p>管理常用网站链接</p>
+                    </div>
+                    <div class="action-card" data-action="announcements">
+                        <div class="action-icon">📢</div>
+                        <h3>重要公告</h3>
+                        <p>发布和查看宿舍通知</p>
+                    </div>
+                    <div class="action-card" data-action="lottery">
+                        <div class="action-icon">🎯</div>
+                        <h3>抽奖轮盘</h3>
+                        <p>随机决策小工具</p>
+                    </div>
+                </div>
+
+                <!-- 最近公告预览 -->
+                <div class="recent-announcements">
+                    <h3>最新公告</h3>
+                    <div id="recentAnnouncementsList">
+                        <!-- 动态加载 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 网址管理页面 -->
+            <div id="urlsPage" class="content-page">
+                <div class="page-header">
+                    <h2>实用网址</h2>
+                </div>
+                
+                <!-- 分类标签栏 -->
+                <div class="category-tabs">
+                    <div id="categoryTabsList" class="tabs-list">
+                        <!-- 动态加载分类标签 -->
+                    </div>
+                    <div class="category-management">
+                        <button id="addCategoryBtn" class="category-mgmt-btn add-category-btn" title="添加分类">
+                            <span class="add-icon">+</span>
+                        </button>
+                        <button id="editCategoryBtn" class="category-mgmt-btn edit-category-btn" title="编辑当前分类" onclick="UrlManager.editCurrentCategory()">
+                            <img src="images/edit.png" alt="编辑分类" class="icon-img">
+                        </button>
+                        <button id="deleteCategoryBtn" class="category-mgmt-btn delete-category-btn" title="删除当前分类" onclick="UrlManager.deleteCurrentCategory()">
+                            <span class="delete-icon">×</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 当前分类的网址列表 -->
+                <div id="currentCategoryUrls">
+                    <!-- 动态加载当前分类的网址 -->
+                </div>
+            </div>
+
+            <!-- 公告页面 -->
+            <div id="announcementsPage" class="content-page">
+                <div class="page-header">
+                    <h2>重要公告</h2>
+                    <div class="announcement-management">
+                        <button id="addAnnouncementBtn" class="category-mgmt-btn add-announcement-btn" title="发布公告">
+                            <span class="add-icon">+</span>
+                        </button>
+                        <button id="editAnnouncementModeBtn" class="category-mgmt-btn edit-announcement-mode-btn" title="编辑模式" onclick="AnnouncementManager.toggleEditMode()">
+                            <span class="icon">✎</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="announcementsList">
+                    <!-- 动态加载公告列表 -->
+                </div>
+            </div>
+
+            <!-- 抽奖轮盘页面 -->
+            <div id="lotteryPage" class="content-page">
+                <div class="page-header">
+                    <h2>抽奖轮盘</h2>
+                    <div class="wheel-management">
+                        <button id="addWheelBtn" class="category-mgmt-btn add-wheel-btn" title="新建轮盘">
+                            <span class="add-icon">+</span>
+                        </button>
+                        <button id="editWheelModeBtn" class="category-mgmt-btn edit-wheel-mode-btn" title="编辑模式" onclick="LotteryManager.toggleEditMode()">
+                            <span class="icon">✎</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="wheelsList">
+                    <!-- 动态加载轮盘列表 -->
+                </div>
+                <!--
+                <div id="lotteryHistory">
+                    <h3>抽奖历史</h3>
+                    <div id="historyList">
+                    </div>
+                </div>
+                -->
+            </div>
+        </main>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">标题</h3>
+                <button id="closeModal" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 动态内容 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/urls.js"></script>
+    <script src="js/announcements.js"></script>
+    <script src="js/lottery.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

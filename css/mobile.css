@@ -1,0 +1,472 @@
+/* 移动端专用样式 */
+
+/* 基础移动端适配 */
+@media screen and (max-width: 768px) {
+    /* 确保在移动设备上禁用缩放 */
+    html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+    
+    body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* 输入框允许选择 */
+    input, textarea {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+
+    /* 登录窗口移动端优化 */
+    .login-window {
+        width: 95%;
+        max-width: 350px;
+        margin: 20px;
+    }
+
+    .login-header {
+        padding: 25px 20px 20px;
+    }
+
+    .login-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .login-body {
+        padding: 25px 20px;
+    }
+}
+
+/* 小屏幕优化 */
+@media screen and (max-width: 480px) {
+    /* 登录窗口 */
+    .login-window {
+        width: 95%;
+        margin: 15px;
+    }
+    
+    .login-header {
+        padding: 20px 15px 15px;
+    }
+    
+    .login-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .login-body {
+        padding: 20px 15px;
+    }
+    
+    /* 主内容区域 */
+    .main-content {
+        padding: 15px;
+    }
+    
+    /* 页面标题 */
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .page-header .btn-primary {
+        width: 100%;
+    }
+    
+    /* 快速操作卡片 */
+    .action-card {
+        padding: 15px;
+    }
+    
+    .action-icon {
+        font-size: 2rem;
+    }
+    
+    .action-card h3 {
+        font-size: 1rem;
+    }
+    
+    .action-card p {
+        font-size: 0.85rem;
+    }
+    
+    /* 卡片样式 */
+    .card {
+        padding: 15px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .card-actions {
+        align-self: flex-end;
+    }
+    
+    /* 模态框 */
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 15px;
+    }
+    
+    /* 轮盘 */
+    .wheel {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .wheel-section {
+        font-size: 12px;
+    }
+}
+
+/* 超小屏幕优化 */
+@media screen and (max-width: 360px) {
+    .main-content {
+        padding: 10px;
+    }
+    
+    .login-window {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .login-header {
+        padding: 15px 12px 12px;
+    }
+    
+    .login-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .login-body {
+        padding: 15px 12px;
+    }
+    
+    .action-card {
+        padding: 12px;
+    }
+    
+    .action-icon {
+        font-size: 1.8rem;
+    }
+    
+    .card {
+        padding: 12px;
+    }
+    
+    .wheel {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .bottom-nav .nav-text {
+        font-size: 11px;
+    }
+    
+    .bottom-nav .nav-icon {
+        font-size: 18px;
+    }
+}
+
+/* 触摸优化 */
+@media (pointer: coarse) {
+    /* 增加触摸目标大小 */
+    .btn-primary,
+    .nav-item,
+    .action-card,
+    .card {
+        min-height: 44px;
+    }
+    
+    .nav-item {
+        padding: 12px 5px;
+    }
+    
+    .card-actions button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 10px;
+    }
+    
+    .btn-close {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* 登录窗口触摸优化 */
+    .input-group input {
+        min-height: 48px;
+        padding: 16px;
+    }
+
+    .login-body .btn-primary {
+        min-height: 48px;
+        padding: 16px 30px;
+    }
+}
+
+/* 横屏模式优化（虽然主要是竖屏，但保留基础支持） */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .login-window {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .login-header {
+        padding: 15px 20px 12px;
+    }
+    
+    .login-header h2 {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+    
+    .login-header p {
+        margin-bottom: 0;
+    }
+
+    .login-body {
+        padding: 15px 20px;
+    }
+    
+    .main-content {
+        padding-bottom: 90px;
+    }
+}
+
+/* 安卓系统特定优化 */
+@supports (-webkit-appearance: none) {
+    /* WebKit 浏览器优化 */
+    input, textarea, select {
+        -webkit-appearance: none;
+        border-radius: 8px;
+    }
+    
+    button {
+        -webkit-appearance: none;
+    }
+}
+
+/* 高分辨率屏幕优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .wheel {
+        border-width: 6px;
+    }
+    
+    .wheel-pointer {
+        border-left-width: 12px;
+        border-right-width: 12px;
+        border-top-width: 16px;
+    }
+
+    .login-window {
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* 暗色模式支持（可选） */
+@media (prefers-color-scheme: dark) {
+    /* 暂时保持浅色主题，后续可以添加暗色模式 */
+}
+
+/* 减少动画（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .wheel {
+        transition: none;
+    }
+
+    .login-window {
+        animation: none;
+    }
+
+    @keyframes loginSlideIn {
+        from, to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+}
+
+/* 安全区域适配（刘海屏等） */
+@supports (padding: max(0px)) {
+    .header {
+        padding-top: max(15px, env(safe-area-inset-top));
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+    
+    .bottom-nav {
+        padding-bottom: max(0px, env(safe-area-inset-bottom));
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+    
+    .main-content {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+
+    .login-modal {
+        padding-top: max(0px, env(safe-area-inset-top));
+        padding-bottom: max(0px, env(safe-area-inset-bottom));
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+}
+
+/* 移动端网址和历史项目优化 */
+@media screen and (max-width: 480px) {
+    .url-actions button,
+    .card-actions button {
+        min-height: 36px;
+        min-width: 60px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .history-item {
+        padding: 10px;
+    }
+    
+    .option-tag {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+    
+    /* 分类标签栏移动端优化 */
+    .category-tabs {
+        padding: 6px;
+        margin-bottom: 15px;
+    }
+    
+    .category-tab {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .category-management {
+        gap: 6px;
+        margin-left: 6px;
+    }
+    
+    .category-mgmt-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .add-icon {
+        font-size: 18px;
+    }
+    
+    .delete-icon {
+        font-size: 20px;
+    }
+    
+    .category-mgmt-btn .icon-img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .category-header {
+        margin-bottom: 10px;
+    }
+    
+    .header-actions {
+        gap: 8px;
+    }
+    
+    .action-icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .action-icon-btn .icon {
+        font-size: 16px;
+    }
+    
+    .action-icon-btn .icon-img {
+        width: 27px;
+        height: 27px;
+    }
+    
+    .tab-actions {
+        display: none !important; /* 移动端隐藏悬停操作 */
+    }
+    
+    /* 公告管理按钮移动端样式 */
+    .announcement-management {
+        gap: 6px;
+    }
+    
+    .announcement-management .category-mgmt-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* 轮盘管理按钮移动端样式 */
+    .wheel-management {
+        gap: 6px;
+    }
+    
+    .wheel-management .category-mgmt-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* 焦点状态优化 */
+@media (any-hover: none) {
+    /* 移除悬停效果，因为触摸设备没有真正的悬停 */
+    .action-card:hover,
+    .card:hover,
+    .btn-primary:hover,
+    .url-item:hover,
+    .history-item:hover {
+        transform: none;
+        box-shadow: initial;
+        background: initial;
+        border-color: initial;
+    }
+    
+    /* 添加点击反馈 */
+    .action-card:active,
+    .card:active,
+    .btn-primary:active,
+    .url-item:active,
+    .history-item:active {
+        transform: scale(0.98);
+        opacity: 0.8;
+    }
+
+    .login-window:active {
+        transform: scale(0.99);
+    }
+    
+    /* 按钮点击反馈 */
+    .url-actions button:active,
+    .card-actions button:active {
+        background-color: rgba(79, 142, 247, 0.2) !important;
+    }
+}
