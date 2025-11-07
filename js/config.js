@@ -1,7 +1,7 @@
 // 配置文件
 const CONFIG = {
     // API 基础地址 - 需要替换为你的 Laf 云函数地址
-    API_BASE_URL: 'https://dormback.huizhi.pro',
+    API_BASE_URL: 'https://mpt9a2gtfa.bja.sealos.run',
     
     // 本地存储键名
     STORAGE_KEYS: {
